@@ -102,6 +102,9 @@ def getSignDetail(us_task):
 	})
 	res = session.post(url=url, data=data, verify=False)
 	unSignedTaskDetail = res.json().get('datas')
+	r = json.loads(res.text)
+	global reasonwid
+	reasonwid = r['datas']['extraField'][0]['extraFieldItems'][0]['wid']
 	return unSignedTaskDetail
 
 
